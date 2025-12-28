@@ -28,152 +28,187 @@ Publish the website in the given URL.
 ```
 <html>
 <head>
-    <title>Interactive Image Gallery</title>
-    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>boot Gallery</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <h1>IMAGE GALLERY</h1>
-    </header>
+    <div class="box">
+        <h1 class="heading">BOOTS</h1>
+        <p class="small-text">nike . adidas. sega. puma. nivia.</p>
 
-    <div class="gallery-container">
-        <div class="gallery-card">
-            <img id="galleryImage" src="Screenshot 2025-12-26 194510.png" alt="Gallery Image">
-            <p class="caption" id="caption">NIKE BOOT</p>
+        <div class="image-area">
+            <img src="Screenshot 2025-12-26 194510.png" id="photo" alt="universe picture">
 
-            <div class="buttons">
-                <button onclick="prevImage()">Previous</button>
-                <button onclick="nextImage()">Next</button>
-            </div>
+            <p class="title" id="title-text">NIKE BOOT</p>
+            <p class="info" id="info-text">
+                Ghost of the Uchihas
+            </p>
         </div>
+
+        <div class="buttons">
+            <button onclick="prev()">Previous</button>
+            <button onclick="next()">Next</button>
+        </div>
+
+        <p class="count" id="count-text">1 / 6</p>
     </div>
 
     <footer class="footer">
-       ANURANJAN B (25003110)
+        &copy; ANURANJAN B
     </footer>
 
-    <script>
-        let gallery = [
-            { src: "Screenshot 2025-12-26 194510.png", text: "NIKE BOOT" }
-            { src: "Screenshot 2025-12-26 195504.png", text: "ADIDAS BOOT" },
-            { src: "Screenshot 2025-12-26 195746.png", text: "PUMA BOOT" },
-            { src: "Screenshot 2025-12-26 200131.png", text: "NIVIA" },
-            { src: "Screenshot 2025-12-26 200319.png", text: "SEGA BOOT" },
-        ];
-        let index = 0;
-        function nextImage() 
-        {
-            index++;
-            if (index >= gallery.length) 
-            {
-                index = 0;
-            }
-            updateImage();
-        }
-        function prevImage() 
-        {
-            index--;
-            if (index < 0) 
-            {
-                index = gallery.length - 1;
-            }
-            updateImage();
-        }
-        function updateImage() 
-        {
-            document.getElementById("galleryImage").src = gallery[index].src;
-            document.getElementById("caption").innerText = gallery[index].text;
-        }
-    </script>
+    <script src="sar.js"></script>
 </body>
 </html>
 
-* {
+style.css
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-body
-{
-    background-color: darkgray;
+body {
+    font-family: Arial, sans-serif;
+    background: url("Screenshot 2025-12-28 192605.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-.header 
-{
-    background-color: rgb(160, 152, 238);
-    color: beige;
+    justify-content: space-between;
     text-align: center;
-    padding: 15px;
+    color: rgb(5, 0, 0);
 }
-
-.gallery-container 
-{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.gallery-card 
-{
-    background-color:rgb(175, 71, 78);
+.box {
+    width: 90%;
+    max-width: 600px;
+    margin-left:460px;
     padding: 20px;
+    
+    border-radius: 15px;
+    margin-top:68px;
+    background: urlno-repeat center center fixed;
+}
+.heading {
+    font-size: 32px;
+    margin-bottom: 4px;
+    margin-top:5px;
+}
+.small-text {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #d2caca;
+}
+.image-area img {
+    margin-top:20px;
+    width: 100%;
+    max-width:400px;
+    height: 320px;
+    object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgb(160, 133, 188);
-    text-align: center;
-    width: 380px;
+    border: 2px solid #e92525;
 }
-
-.gallery-card img 
-{
-    width: 250px;     
-    height: 200px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.caption 
-{
-    margin: 15px 0;
-    font-size: 16px;
+.title {
+    margin-top: 10px;
+    font-size: 22px;
     font-weight: bold;
 }
-
-.buttons 
-{
+.info {
+    margin-top: 4px;
+    font-size: 14px;
+}
+.buttons {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     gap: 15px;
 }
-
-.buttons button 
-{
-    background-color: rgb(102, 136, 211);
-    color: rgb(111, 172, 210);
+.buttons button {
+    width: 120px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
     border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
     cursor: pointer;
+    background-color: #ffd4ec;
+    color: #2b1022;
+}
+.count {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #cdd4ff;
+}
+.footer {
+    margin-left:75px;
+    font-size: 25px;
+    padding: 8px;
+    color: #e5e7ff;
 }
 
-.buttons button:hover 
-{
-    background-color: rgb(198, 60, 60);
-}
 
-.footer 
-{
-    background-color: rgb(220, 161, 53);
-    color:rgb(17, 2, 2);
-    text-align: center;
-    padding: 12px;
+var pics = [
+    {
+        image: "Screenshot 2025-12-26 194510.png",
+        title: "nike boot",
+        info: "rs=5000"
+    },
+    {
+        image: "Screenshot 2025-12-26 195504.png",
+        title: "adidas boot",
+        info: "rs=4000"
+    },
+    {
+        image: "Screenshot 2025-12-26 195746.png",
+        title: "puma boot",
+        info: "rs=3000"
+    },
+    {
+        image: "Screenshot 2025-12-26 200131.png",
+        title: "nivia boot",
+        info: "rs=2000"
+    },
+    {
+      image: "Screenshot 2025-12-26 200319.png",
+        title: "sega boot",
+        info: "rs=1000"
+    }
+];
+
+var i = 0; 
+
+var photo     = document.getElementById("photo");
+var titleText = document.getElementById("title-text");
+var infoText  = document.getElementById("info-text");
+var countText = document.getElementById("count-text");
+
+function show() {
+    photo.src           = pics[i].image;
+    titleText.innerHTML = pics[i].title;
+    infoText.innerHTML  = pics[i].info;
+    countText.innerHTML = (i + 1) + " / " + pics.length;
 }
+function next() {
+    i++;
+    if (i >= pics.length) {
+        i = 0;
+    }
+    show();
+}
+function prev() {
+    i--;
+    if (i < 0) {
+        i = pics.length - 1;
+    }
+    show();
+}
+show();
 ```
 ## OUTPUT:
-![alt text](<Screenshot 2025-12-26 211345.png>)
+![alt text](<Screenshot 2025-12-28 193919.png>)
+![alt text](<Screenshot 2025-12-28 193907.png>)
+![alt text](<Screenshot 2025-12-28 193838.png>)
+![alt text](<Screenshot 2025-12-28 193851.png>)
+![alt text](<Screenshot 2025-12-28 193750.png>)
 ## RESULT:
 The program for designing an interactive image gallery using HTML, CSS and JavaScript is executed successfully.
